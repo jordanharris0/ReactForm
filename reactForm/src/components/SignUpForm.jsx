@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //sign up function
-export default function SignUpForm() {
+export default function SignUpForm({ token, setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -11,15 +11,16 @@ export default function SignUpForm() {
 
     try {
       //posts username to api
-      const result = await fetch(
+      const response = await fetch(
         "https://fsa-jwt-practice.herokuapp.com/signup",
         {
           method: "POST",
           body: JSON.stringify({ username }),
         }
       );
-      const json = await result.json();
-      console.log(json);
+      const json = await response.json();
+      console.log(json.token);
+      setToken(json.token);
     } catch (error) {
       setError(error.message);
     }
