@@ -5,8 +5,6 @@ export default function Authenticate({ token }) {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
-  console.log(token);
-
   async function handleClick() {
     try {
       const response = await fetch(
@@ -29,9 +27,13 @@ export default function Authenticate({ token }) {
   return (
     <>
       <h2>Authenticate</h2>
-      {successMessage && <p>{successMessage}</p>}
+      {successMessage && (
+        <p>
+          {successMessage} Thanks {}
+        </p>
+      )}
       {error && <p>{error}</p>}
-      <button onClick={handleClick}>Authenticate Token</button>
+      <button onClick={handleClick}>Authenticated Token</button>
     </>
   );
 }
