@@ -41,6 +41,7 @@ export default function SignUpForm({ token, setToken }) {
         <label>
           Username:{" "}
           <input
+            required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -49,6 +50,7 @@ export default function SignUpForm({ token, setToken }) {
         <label>
           Passowrd:{" "}
           <input
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
